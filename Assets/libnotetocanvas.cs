@@ -245,7 +245,7 @@ public class libnotetocanvas : MonoBehaviour, PlacenoteListener
         else
         {
             MAP_NAME = mapid1.text;
-           // DeleteMaps();
+            DeleteMaps();
             debugText1.GetComponent<Text>().text = "done";
             Debug.Log("done");
             savepanel.SetActive(false);
@@ -257,12 +257,12 @@ public class libnotetocanvas : MonoBehaviour, PlacenoteListener
 
     public void DeleteMaps()
     {
-        if (!LibPlacenote.Instance.Initialized())
-        {
-           // Debug.Log("SDK not yet initialized");
-            //ToastManager.ShowToast("SDK not yet initialized", 2f);
-            return;
-        }
+        //if (!LibPlacenote.Instance.Initialized())
+        //{
+        //   // Debug.Log("SDK not yet initialized");
+        //    //ToastManager.ShowToast("SDK not yet initialized", 2f);
+        //    return;
+        //}
         //delete mAP
        
 

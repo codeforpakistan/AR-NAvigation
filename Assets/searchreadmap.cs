@@ -95,33 +95,39 @@ public class searchreadmap : MonoBehaviour {
     {
         nnn.text = "delete btn clicked";
 
-        if (!LibPlacenote.Instance.Initialized())
-        {
-            Debug.Log("SDK not yet initialized");
-            return;
-        }
+        //if (!LibPlacenote.Instance.Initialized())
+        //{
+        //    Debug.Log("SDK not yet initialized");
+        //    return;
+        //}
 
-        mLabelText.text = "Deleting Map ID: " + mSelectedMapId;
+      //  mLabelText.text = "Deleting Map ID: " + mSelectedMapId;
+
         LibPlacenote.Instance.DeleteMap(mSelectedMapId, (deleted, errMsg) => {
             if (deleted)
             {
+                nnn.text = nnn.text+"deleted if condition";
+
                 mMapSelectedPanel.SetActive(false);
                 mLabelText.text = "Deleted ID: " + mSelectedMapId;
                 OnListMapClick();
+                nnn.text = nnn.text + "after onlistmap ftn";
+
             }
             else
             {
                 mLabelText.text = "Failed to delete ID: " + mSelectedMapId;
+
             }
         });
     }
     public void OnListMapClick()
     {
-        if (!LibPlacenote.Instance.Initialized())
-        {
-            Debug.Log("SDK not yet initialized");
-            return;
-        }
+        //if (!LibPlacenote.Instance.Initialized())
+        //{
+        //    Debug.Log("SDK not yet initialized");
+        //    return;
+        //}
 
         foreach (Transform t in mListContentParent.transform)
         {
@@ -282,11 +288,11 @@ public class searchreadmap : MonoBehaviour {
         ConfigureSession(false);
         Debug.Log("loadmap and config session value");
 
-        if (!LibPlacenote.Instance.Initialized())
-        {
-            Debug.Log("SDK not yet initialized");
-            return;
-        }
+        //if (!LibPlacenote.Instance.Initialized())
+        //{
+        //    Debug.Log("SDK not yet initialized");
+        //    return;
+        //}
 
         ResetSlider();
         Debug.Log("resetslider");
