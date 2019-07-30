@@ -93,33 +93,41 @@ public class searchreadmap : MonoBehaviour {
     }
     public void OnDeleteMapClicked()
     {
-        if (!LibPlacenote.Instance.Initialized())
-        {
-            Debug.Log("SDK not yet initialized");
-            return;
-        }
+        nnn.text = "delete btn clicked";
 
-        mLabelText.text = "Deleting Map ID: " + mSelectedMapId;
+        //if (!LibPlacenote.Instance.Initialized())
+        //{
+        //    Debug.Log("SDK not yet initialized");
+        //    return;
+        //}
+
+      //  mLabelText.text = "Deleting Map ID: " + mSelectedMapId;
+
         LibPlacenote.Instance.DeleteMap(mSelectedMapId, (deleted, errMsg) => {
             if (deleted)
             {
+                nnn.text = nnn.text+"deleted if condition";
+
                 mMapSelectedPanel.SetActive(false);
                 mLabelText.text = "Deleted ID: " + mSelectedMapId;
                 OnListMapClick();
+                nnn.text = nnn.text + "after onlistmap ftn";
+
             }
             else
             {
                 mLabelText.text = "Failed to delete ID: " + mSelectedMapId;
+
             }
         });
     }
     public void OnListMapClick()
     {
-        if (!LibPlacenote.Instance.Initialized())
-        {
-            Debug.Log("SDK not yet initialized");
-            return;
-        }
+        //if (!LibPlacenote.Instance.Initialized())
+        //{
+        //    Debug.Log("SDK not yet initialized");
+        //    return;
+        //}
 
         foreach (Transform t in mListContentParent.transform)
         {
@@ -189,6 +197,7 @@ public class searchreadmap : MonoBehaviour {
     }
     public GameObject iiii;
     void Start () {
+       // LibPlacenote.Instance.Initialized();
         iiii = GameObject.Find("ARKitWorldTrackingRemoteConnection");
         mRadiusSlider.value = 0.5f;
         
@@ -273,27 +282,29 @@ public class searchreadmap : MonoBehaviour {
         mRadiusLabel.text = "Distance Filter: Off";
     }
     public void OnLoadMapClicked()
-    {
+    {        nnn.text = "load btn clicked";
+        
+
         ConfigureSession(false);
         Debug.Log("loadmap and config session value");
 
-        if (!LibPlacenote.Instance.Initialized())
-        {
-            Debug.Log("SDK not yet initialized");
-            return;
-        }
+        //if (!LibPlacenote.Instance.Initialized())
+        //{
+        //    Debug.Log("SDK not yet initialized");
+        //    return;
+        //}
 
         ResetSlider();
         Debug.Log("resetslider");
-
+        nnn.text = nnn.text+"slider reset";
         mLabelText.text = "Loading Map ID: " + mSelectedMapId;
         LibPlacenote.Instance.LoadMap(mSelectedMapId,
             (completed, faulted, percentage) => {
 
-
+                nnn.text = nnn.text + " load map  called ";
                 if (completed)
                 {
-                    
+                    nnn.text = nnn.text + " load map  completed ";
 
                     mMapSelectedPanel.SetActive(false);
                     mMapListPanel.SetActive(false);
@@ -303,8 +314,8 @@ public class searchreadmap : MonoBehaviour {
                      mPlaneDetectionToggle.SetActive(true);
                     LibPlacenote.Instance.StartSession(true);
                     Debug.Log("instance start session called");
-                    nnn.text = mSelectedMapId.ToString();
-
+                   
+                    
                     if (mReportDebug)
                     {
                         Debug.Log("mreportdebug"+mReportDebug);

@@ -257,12 +257,12 @@ public class libnotetocanvas : MonoBehaviour, PlacenoteListener
 
     public void DeleteMaps()
     {
-        if (!LibPlacenote.Instance.Initialized())
-        {
-           // Debug.Log("SDK not yet initialized");
-            //ToastManager.ShowToast("SDK not yet initialized", 2f);
-            return;
-        }
+        //if (!LibPlacenote.Instance.Initialized())
+        //{
+        //   // Debug.Log("SDK not yet initialized");
+        //    //ToastManager.ShowToast("SDK not yet initialized", 2f);
+        //    return;
+        //}
         //delete mAP
        
 
