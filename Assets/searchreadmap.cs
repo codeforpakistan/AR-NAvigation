@@ -93,6 +93,8 @@ public class searchreadmap : MonoBehaviour {
     }
     public void OnDeleteMapClicked()
     {
+        nnn.text = "delete btn clicked";
+
         if (!LibPlacenote.Instance.Initialized())
         {
             Debug.Log("SDK not yet initialized");
@@ -189,6 +191,7 @@ public class searchreadmap : MonoBehaviour {
     }
     public GameObject iiii;
     void Start () {
+       // LibPlacenote.Instance.Initialized();
         iiii = GameObject.Find("ARKitWorldTrackingRemoteConnection");
         mRadiusSlider.value = 0.5f;
         
@@ -273,7 +276,9 @@ public class searchreadmap : MonoBehaviour {
         mRadiusLabel.text = "Distance Filter: Off";
     }
     public void OnLoadMapClicked()
-    {
+    {        nnn.text = "load btn clicked";
+        
+
         ConfigureSession(false);
         Debug.Log("loadmap and config session value");
 
@@ -285,15 +290,15 @@ public class searchreadmap : MonoBehaviour {
 
         ResetSlider();
         Debug.Log("resetslider");
-
+        nnn.text = nnn.text+"slider reset";
         mLabelText.text = "Loading Map ID: " + mSelectedMapId;
         LibPlacenote.Instance.LoadMap(mSelectedMapId,
             (completed, faulted, percentage) => {
 
-
+                nnn.text = nnn.text + " load map  called ";
                 if (completed)
                 {
-                    
+                    nnn.text = nnn.text + " load map  completed ";
 
                     mMapSelectedPanel.SetActive(false);
                     mMapListPanel.SetActive(false);
@@ -303,8 +308,8 @@ public class searchreadmap : MonoBehaviour {
                      mPlaneDetectionToggle.SetActive(true);
                     LibPlacenote.Instance.StartSession(true);
                     Debug.Log("instance start session called");
-                    nnn.text = mSelectedMapId.ToString();
-
+                   
+                    
                     if (mReportDebug)
                     {
                         Debug.Log("mreportdebug"+mReportDebug);
